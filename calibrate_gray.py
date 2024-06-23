@@ -7,6 +7,7 @@ from time import sleep
 import paho.mqtt.client as mqtt
 import csv
 
+#Parametry wyświetlania obrazów:
 plt.ion()
 size = 8
 M = [[0 for j in range(size)] for i in range(size)]
@@ -34,7 +35,7 @@ def on_message(mosq, obj, msg):
 
     #Po zakończeniu kalibracji: zapis do csv i wyświetlenie wykresu
     if n>=256: 
-        with open('calibrate_gray.csv', 'w', newline='') as csvfile:
+        with open('.\\csv\\calibrate_gray.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile, delimiter=',',
                                     quotechar=' ', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['avg_values', 'meas_values'])
